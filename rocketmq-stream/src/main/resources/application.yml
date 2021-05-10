@@ -1,0 +1,55 @@
+server:
+  port: 7711
+logging:
+  level:
+    com.alibaba.cloud.stream.binder.rocketmq: DEBUG
+spring:
+  application:
+    name: rocketmq-stream
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: 127.0.0.1:9876
+        bindings:
+          tx-output:
+            producer:
+              group: tx-producer-group
+              # true表明是事务消息
+              transactional: true
+          tx-input:
+            consumer:
+              broadcasting: false
+          # 带有tag标签
+          def-input:
+            consumer:
+              tags: tag1
+      bindings:
+        # 生产者配置(output-input对应的消息传输的信道)
+        output:
+          destination: test-topic # 主题
+          content-type: text/plain # 消息类型
+          group: test-group
+        # 消费者配置
+        input:
+          destination: test-topic # 主题
+          content-type: text/plain # 消息类型
+          group: test-group
+        # 自定义生产者-消费者配置，不同的信道，group也不相同
+        def-output:
+          destination: test-def-topic
+          content-type: text/plain
+          group: def-test-group
+        def-input:
+          destination: test-def-topic
+          content-type: text/plain
+          group: def-test-group
+        # 事务
+        tx-output:
+          destination: tx-test-topic
+          content-type: application/json
+          group: tx-test-group
+        tx-input:
+          destination: tx-test-topic
+          content-type: text/plain
+          group: tx-test-group
