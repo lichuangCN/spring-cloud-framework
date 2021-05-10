@@ -1,0 +1,9 @@
+server:
+  port: 7700
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost
