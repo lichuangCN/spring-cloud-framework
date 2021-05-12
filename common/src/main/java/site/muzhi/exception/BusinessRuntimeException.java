@@ -8,10 +8,10 @@ package site.muzhi.exception;
 public class BusinessRuntimeException extends Exception {
     static final long serialVersionUID = 1L;
 
-    private Integer errorCode = 500;
+    private String errorCode = "500";
     private String errorMessage = "服务器内部错误";
 
-    public BusinessRuntimeException(Integer errorCode, String errorMessage) {
+    public BusinessRuntimeException(String errorCode, String errorMessage) {
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }
@@ -20,11 +20,11 @@ public class BusinessRuntimeException extends Exception {
         this.errorMessage = errorMessage;
     }
 
-    public Integer getErrorCode() {
+    public String getErrorCode() {
         return errorCode;
     }
 
-    public void setErrorCode(Integer errorCode) {
+    public void setErrorCode(String errorCode) {
         this.errorCode = errorCode;
     }
 

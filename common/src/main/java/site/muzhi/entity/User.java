@@ -2,6 +2,7 @@ package site.muzhi.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,9 @@ import java.util.List;
  * @description
  */
 @Data
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String name;
 

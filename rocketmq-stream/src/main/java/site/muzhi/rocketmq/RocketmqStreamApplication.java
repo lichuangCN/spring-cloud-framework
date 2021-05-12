@@ -7,9 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.cloud.stream.messaging.Source;
-import site.muzhi.rocketmq.consumer.DefSink;
-import site.muzhi.rocketmq.consumer.ReceiverService;
-import site.muzhi.rocketmq.model.User;
+import site.muzhi.rocketmq.comsumer.DefSink;
+import site.muzhi.rocketmq.comsumer.ReceiverService;
 import site.muzhi.rocketmq.producer.DefSource;
 import site.muzhi.rocketmq.producer.SenderService;
 import site.muzhi.rocketmq.transaction.Sender;
@@ -35,10 +34,11 @@ public class RocketmqStreamApplication implements CommandLineRunner {
         //senderService.sendDef("hello,world, def");
         //receiverService.receive();
 
-        //sender.sendTransactionMessage("tx message 1", "1");
-        //sender.sendTransactionMessage("tx message 2", "2");
-        //sender.sendTransactionMessage("tx message 3", "3");
-        //sender.sendTransactionMessage("tx message 4", "4");
+        // 事务消息
+        sender.sendTransactionMessage("tx message 1", "1");
+        sender.sendTransactionMessage("tx message 2", "2");
+        sender.sendTransactionMessage("tx message 3", "3");
+        sender.sendTransactionMessage("tx message 4", "4");
 
         //senderService.sendDefObject(User.builder().name("HacJack").age(23).gender("male").build());
         //senderService.sendDefWithTags(User.builder().name("HacJack").age(23).gender("male").build(), "tag1");

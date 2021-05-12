@@ -10,6 +10,7 @@
     <groupId>site.muzhi</groupId>
     <artifactId>gateway</artifactId>
     <version>1.0</version>
+
     <name>gateway</name>
     <description>Demo project for Spring Boot</description>
 

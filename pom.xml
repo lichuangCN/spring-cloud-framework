@@ -7,10 +7,17 @@
     <groupId>site.muzhi</groupId>
     <artifactId>spring-cloud-framework</artifactId>
     <version>1.0</version>
-
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.2.RELEASE</version>
+        <relativePath/>
+    </parent>
     <modules>
         <module>gateway</module>
         <module>common</module>
+        <module>rocketmq-stream</module>
+        <module>rocketmq-springboot</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
@@ -25,6 +32,8 @@
         <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
         <fastjson.version>1.2.76</fastjson.version>
+        <rocketmq.version>2.0.4</rocketmq.version>
+        <hutool.version>5.6.5</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -55,6 +64,17 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
