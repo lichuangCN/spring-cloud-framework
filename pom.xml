@@ -18,6 +18,8 @@
         <module>common</module>
         <module>rocketmq-stream</module>
         <module>rocketmq-springboot</module>
+        <module>a-service</module>
+        <module>b-service</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
@@ -34,6 +36,8 @@
         <fastjson.version>1.2.76</fastjson.version>
         <rocketmq.version>2.0.4</rocketmq.version>
         <hutool.version>5.6.5</hutool.version>
+        <feign.version>10.10.1</feign.version>
+        <powermock.version>2.0.9</powermock.version>
     </properties>
 
     <dependencyManagement>
@@ -74,7 +78,21 @@
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-httpclient</artifactId>
+                <version>${feign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-module-junit4</artifactId>
+                <version>${powermock.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-api-mockito2</artifactId>
+                <version>${powermock.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

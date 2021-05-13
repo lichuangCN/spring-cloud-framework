@@ -22,12 +22,12 @@ public class Result<T> {
      */
     private T data;
 
-    public Result(Integer code, String message) {
+    protected Result(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public Result(Integer code, String message, T data) {
+    protected Result(Integer code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
