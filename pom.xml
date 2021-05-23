@@ -20,6 +20,7 @@
         <module>rocketmq-springboot</module>
         <module>a-service</module>
         <module>b-service</module>
+        <module>second-kill</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
@@ -38,6 +39,9 @@
         <hutool.version>5.6.5</hutool.version>
         <feign.version>10.10.1</feign.version>
         <powermock.version>2.0.9</powermock.version>
+        <druid.version>1.2.5</druid.version>
+        <mysql.version>5.1.49</mysql.version>
+        <mybatis-plus.version>3.4.0</mybatis-plus.version>
     </properties>
 
     <dependencyManagement>
@@ -92,6 +96,21 @@
                 <groupId>org.powermock</groupId>
                 <artifactId>powermock-api-mockito2</artifactId>
                 <version>${powermock.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

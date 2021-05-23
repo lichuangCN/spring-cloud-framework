@@ -1,0 +1,14 @@
+package site.muzhi.secondkill.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
+import site.muzhi.secondkill.common.Product;
+
+/**
+ * @author lichuang
+ * @date 2021/05/23
+ * @description
+ */
+@Repository
+public interface ProductMapper extends BaseMapper<Product> {
+}
