@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 public enum ExceptionCode {
 
-    PARAMETER_ERROR("x00001", "参数错误"),
+    SERVICE_ERROR("50000", "服务内部错误"),
     ;
 
     ExceptionCode(String code, String message) {

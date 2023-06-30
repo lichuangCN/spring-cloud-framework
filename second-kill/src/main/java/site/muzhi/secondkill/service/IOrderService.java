@@ -1,7 +1,7 @@
 package site.muzhi.secondkill.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import site.muzhi.exception.BusinessRuntimeException;
+import site.muzhi.exception.BusinessException;
 import site.muzhi.secondkill.common.Order;
 
 /**
@@ -11,5 +11,5 @@ import site.muzhi.secondkill.common.Order;
  */
 public interface IOrderService extends IService<Order> {
 
-    void secondKill(Integer productId) throws BusinessRuntimeException;
+    void secondKill(Integer productId) throws BusinessException;
 }

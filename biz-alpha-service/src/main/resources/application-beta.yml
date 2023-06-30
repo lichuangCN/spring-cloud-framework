@@ -1,0 +1,10 @@
+server:
+  port: 8951
+spring:
+  application:
+    name: biz-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-alpha:8900/eureka/,http://eureka-beta:8901/eureka/,http://eureka-charlie:8900/eureka/

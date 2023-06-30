@@ -1,0 +1,15 @@
+server:
+  port: 8902
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    hostname: eureka-charlie
+  server:
+    response-cache-update-interval-ms:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://eureka-alpha:8900/eureka/,http://eureka-beta:8900/eureka/

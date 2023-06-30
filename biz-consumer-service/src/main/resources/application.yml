@@ -1,0 +1,11 @@
+server:
+  port: 8960
+spring:
+  application:
+    name: biz-consumer
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-alpha:8900/eureka/,http://eureka-beta:8901/eureka/
+

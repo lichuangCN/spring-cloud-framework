@@ -1,0 +1,13 @@
+server:
+  port: 8901
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    hostname: eureka-beta
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://eureka-alpha:8900/eureka/,http://eureka-charlie:8900/eureka/

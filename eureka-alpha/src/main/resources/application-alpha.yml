@@ -1,0 +1,23 @@
+server:
+  port: 8900
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    # hostname 主机名不配置的话默认为电脑名
+    # instance-id 不配置的话默认值为主机名+服务名+端口，如 lichuang:biz-service:8951
+    # prefer-ip-address
+    # 1.默认false 使用域名形式;如果hostname以ip形式设置，则该配置应该设置为true
+    # 2.并且该属性设置应该和eureka.client.serviceUrl.defaultZone中的地址对应
+    hostname: eureka-alpha # 模拟域名地址
+  client:
+    # false 不向注册中心注册自己
+    # true eureka集群，需要向其他注册中心注册自己
+    register-with-eureka: true
+    # false 不需要去注册中心拉取服务列表
+    # true eureka集群，需要向其他注册中心注册，并检索可用的服务列表
+    fetch-registry: true
+    serviceUrl:
+      # 注册到其他eureka上
+      defaultZone: http://eureka-beta:8901/eureka/,http://eureka-charlie:8900/eureka/

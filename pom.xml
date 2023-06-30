@@ -7,45 +7,55 @@
     <groupId>site.muzhi</groupId>
     <artifactId>spring-cloud-framework</artifactId>
     <version>1.0</version>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.2.RELEASE</version>
-        <relativePath/>
-    </parent>
     <modules>
+        <module>eureka-alpha</module>
         <module>gateway</module>
         <module>common</module>
-        <module>rocketmq-stream</module>
-        <module>rocketmq-springboot</module>
-        <module>a-service</module>
-        <module>b-service</module>
+        <module>biz-alpha-service</module>
+        <module>biz-consumer-service</module>
         <module>second-kill</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
-        <encoding>UTF-8</encoding>
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- maven properties -->
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
 
-        <!-- version -->
+        <!-- spring cloud -->
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>
+        <!-- spring boot -->
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
-        <fastjson.version>1.2.76</fastjson.version>
-        <rocketmq.version>2.0.4</rocketmq.version>
-        <hutool.version>5.6.5</hutool.version>
-        <feign.version>10.10.1</feign.version>
-        <powermock.version>2.0.9</powermock.version>
-        <druid.version>1.2.5</druid.version>
-        <mysql.version>5.1.49</mysql.version>
-        <mybatis-plus.version>3.4.0</mybatis-plus.version>
+
+        <!-- db orm -->
+        <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
+        <druid-spring-boot-starter.version>1.2.8</druid-spring-boot-starter.version>
+        <mybatis-plus-boot-starter.version>3.5.3.1</mybatis-plus-boot-starter.version>
+        <dynamic-datasource-spring-boot-starter.version>3.6.0</dynamic-datasource-spring-boot-starter.version>
+        <redisson.version>3.16.8</redisson.version>
+
+        <!-- tools 默认依赖-->
+        <lombok.version>1.18.26</lombok.version>
+        <hutool.version>5.8.15</hutool.version>
+        <fastjson.version>2.0.32</fastjson.version>
+        <aspectjweaver.version>1.9.19</aspectjweaver.version>
+
+        <!-- apache commons 默认依赖-->
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <commons-httpclient.version>3.1</commons-httpclient.version>
+        <commons-io.version>2.5</commons-io.version>
+        <commons-fileupload.version>1.3.3</commons-fileupload.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
+        <commons-codec.version>1.13</commons-codec.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-pool2.version>2.11.1</commons-pool2.version>
+        <httpclient.version>4.5.14</httpclient.version>
+
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- spring cloud 依赖 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -53,13 +63,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+            <!-- spring boot 依赖 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -67,52 +71,31 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- spring cloud alibaba 依赖 -->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-spring-boot-starter</artifactId>
-                <version>${rocketmq.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.openfeign</groupId>
-                <artifactId>feign-httpclient</artifactId>
-                <version>${feign.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-module-junit4</artifactId>
-                <version>${powermock.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-api-mockito2</artifactId>
-                <version>${powermock.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus.version}</version>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

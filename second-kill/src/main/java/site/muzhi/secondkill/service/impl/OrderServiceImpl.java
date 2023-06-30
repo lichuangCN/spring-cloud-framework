@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import site.muzhi.exception.BusinessRuntimeException;
+import site.muzhi.exception.BusinessException;
 import site.muzhi.secondkill.common.Order;
 import site.muzhi.secondkill.common.Product;
 import site.muzhi.secondkill.mapper.OrderMapper;
@@ -29,10 +29,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void secondKill(Integer productId) throws BusinessRuntimeException {
+    public void secondKill(Integer productId) throws BusinessException {
         Product product = productMapper.selectById(productId);
         if (product.getStock() <= 0) {
-            throw new BusinessRuntimeException("x001", "商品已售完");
+            throw new BusinessException("x001", "商品已售完");
         }
 
         // 创建订单
@@ -47,7 +47,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         product.setStock(product.getStock() - 1);
         int i = productMapper.updateById(product);
         if (i <= 0) {
-            throw new BusinessRuntimeException("x001", "商品已售完");
+            throw new BusinessException("x001", "商品已售完");
         }
     }
 }
